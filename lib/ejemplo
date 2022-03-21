@@ -1,0 +1,95 @@
+import 'dart:convert';
+
+import 'package:arequipalocal/api/Api.dart';
+import 'package:arequipalocal/pantalla/PantallaRegistro.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+
+import 'package:shared_preferences/shared_preferences.dart';
+
+
+
+
+class PantallaLogin extends StatefulWidget {
+  @override
+  _PantallaLoginState createState() => _PantallaLoginState();
+}
+
+class _PantallaLoginState extends State<PantallaLogin> {
+  final GlobalKey<ScaffoldState> _globalKey = new GlobalKey<ScaffoldState>();
+  ...
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      key: _globalKey,
+      appBar: AppBar(
+        title: Text("LOGIN"),
+      ),
+      backgroundColor: Colors.orangeAccent,
+      body: Container(
+        padding: EdgeInsets.all(20),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            TextField(
+              controller: _email,
+              ...
+
+            ),
+            SizedBox( height: 25,),
+            TextField(
+              controller: _password,
+              ...
+            ),
+            SizedBox( height: 50,),
+            FlatButton(
+              ....
+              onPressed: (){
+                _procesoLogin();
+              },
+            ),
+
+            SizedBox( height: 50,),
+            InkWell(
+              child: Text("¿Primera vez?, CREA UNA CUENTA", textAlign: TextAlign.center,),
+              onTap: (){
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (BuildContext) =>PantallaRegistro()
+                ));
+              },
+            )
+
+
+          ],
+        ),
+      ),
+    );
+  }
+
+  void _procesoLogin() async{
+    if(_email.text.isEmpty){
+      _globalKey.currentState.showSnackBar( SnackBar(
+      ....
+      ),);
+    }else if(_password.text.isEmpty){
+      _globalKey.currentState.showSnackBar( SnackBar(
+      ...
+      ),);
+    }else{
+     ....
+      if(body['success']){
+        ....
+        login.setString("token", body['token']);
+        login.setString("user", json.encode(body['user']));
+
+        ...
+      }else{
+        _globalKey.currentState.showSnackBar( SnackBar(
+            content: Text(body['message']),  duration: Duration(seconds: 3)
+        ),);
+      }
+
+    }
+  }
+}
