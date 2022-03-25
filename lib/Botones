@@ -70,6 +70,7 @@ class MisBotonesHome extends StatelessWidget {
                         ],
                       ),
                     ),
+
                   ),
                 ),
               ),
@@ -968,3 +969,521 @@ class BotonesProgramas extends StatelessWidget {
     );
   }
 }
+
+
+Widget botonContinuar(){
+ final preferences = Preferences();
+ return RaisedButton(onPressed:() {
+  preferences.guardarNombre(NameController.text)
+  }, 
+ child: Text('Continuar'),);
+}
+
+ children: [
+              Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  //crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [_boton1("Desayuno"), _boton2("Comida")],
+                ),
+
+
+                  child: ElevatedButton(
+                  
+                  child: const Text('Iniciar Sesión'),
+                  onPressed: () {
+                    print(nameController.text);
+                    print(passwordController.text);
+                    if (_formKey.currentState!.validate()) {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => Principal()));
+                      // Si el formulario es válido, queremos mostrar un Snackbar
+                    } else {
+                      Scaffold.of(context).showSnackBar(SnackBar(
+                        content: Text(
+                            'Por favor, Ingresa los datos. Hay campos vacios'),
+                        backgroundColor: Colors.green,
+                        //width: 600,
+                        shape: StadiumBorder(),
+                        elevation: 560,
+                        //   comportamiento: SnackBarBehavior.floating;
+                      ));
+                    
+                    
+                    
+                    }
+                  },
+                )
+
+accountEmail: Text("informes@gmail.com"),
+
+ children: <Widget>[
+      new UserAccountsDrawerHeader(
+        accountName: FutureBuilder(
+       future: preferences.obtenerNombre();
+       builder: (builder, AsyncSnapshot snapshot){
+          if(snapshot.hasData){
+           final nombre = snapshot.data;
+           return Text(nombre);
+           } else{
+            return Text('Cargando...')
+          }
+        }),
+Que error te bota? Puedes intentar poniendo en el builder esto:
+ (builder, AsyncSnapshot<String?> snapshot) 
+ y en el return Text(nombre) ponle esto: return Text(nombre ?? '')
+        
+       decoration: BoxDecoration(
+         color: Colors.blue,
+   
+      ),
+      Ink(
+        color: Colors.green[300],
+        child: new ListTile(
+          leading: const Icon(Icons.person, color:Colors.blue),
+          title: Text(
+            "Perfil",
+            style: TextStyle(color: Colors.black),
+          ),
+        ),
+      ),
+      Divider(color: Colors.green),
+      new ListTile(
+        dense:true,
+        focusColor:  Colors.yellow,
+        title: const Text("Inicio",
+        //style: styleDrawer,
+        ),
+        leading:  Icon(Icons.home, color:Colors.blue),
+        
+        onTap: () {
+          print("Hola");
+        },
+        onLongPress: () {
+          print('longPress');
+        },
+      ),
+    ....  
+  
+    ],               
+
+    
+  preferences.guardarNombre(nameController.text);
+   SharedPreferences preferences = await SharedPreferences.getInstance();
+    String? nombre = preferences.getString('nombre');
+    return nombre;
+
+
+    Widget botonContinuar() {
+final preferences = Preferences();
+ return ElevatedButton(onPressed:() {
+  preferences.guardarNombre(nameController.text);
+
+   print(nameController.text);
+                    print(passwordController.text);
+                    if (_formKey.currentState!.validate()) {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => Principal()));
+                      // Si el formulario es válido, queremos mostrar un Snackbar
+                    } else {
+                      Scaffold.of(context).showSnackBar(SnackBar(
+                        content: Text(
+                            'Por favor, Ingresa los datos. Hay campos vacios'),
+                        backgroundColor: Colors.green,
+                        //width: 600,
+                        shape: StadiumBorder(),
+                        elevation: 560,
+                        //   comportamiento: SnackBarBehavior.floating;
+                      ));
+                    }
+  }, 
+ child: Text('Continuar'),
+  
+ 
+ );
+  }
+
+
+  class Preferences{
+   Future<void> guardarNombre(String nombre) async {
+    SharedPreferences preferences = await SharedPreferences.getInstance();
+    await preferences.setString('nombre', nombre);
+
+Future<void?> obtenerNombre() async {
+    SharedPreferences preferences = await SharedPreferences.getInstance();
+    String? nombre = preferences.getString('nombre');
+    return nombre;
+  }
+  }
+  }
+
+     body:  FutureBuilder(
+    future: userRef.document(widget.userId).get(),
+    builder: (BuildContext context, AsyncSnapshot snapshot){
+      if(!snapshot.hasData){
+        return Center(
+          child: new CircularProgressIndicator(valueColor: new AlwaysStoppedAnimation<Color>(Colors.white),strokeWidth: 3.0,),);
+      }
+
+      Container(
+   child: FutureBuilder<Agua>(
+      future: _llenarBalde(),
+      builder: (context, snapshot) {
+         if (snapshot.hasData) {
+            return Text(snapshot.data["litros"]);
+         } else if (snapshot.hasError) {
+            return Text("${snapshot.error}");
+         }
+
+         // By default, show a loading spinner.
+         return CircularProgressIndicator();
+      },
+    ),
+),
+
+
+ accountName:   FutureBuilder(
+       future: preferences.obtenerNombre(),
+        builder: (Builder, AsyncSnapshot<String> snapshot) {
+ if(snapshot.hasData){
+           final nombre = snapshot.data;
+           return Text(nombre ?? '');
+           } else{
+            return Text('Cargando...');
+          }
+
+          },
+      
+         
+       
+        
+        ),
+
+        Widget botonContinuar(){
+ final preferences = Preferences();
+ return RaisedButton(onPressed:() {
+  preferences.guardarNombre(NameController.text)
+  }, 
+ child: Text('Continuar'),);
+}
+
+
+
+          new UserAccountsDrawerHeader(
+            accountName: FutureBuilder(
+              future: preferences.obtenerNombre(),
+              builder: (Builder, AsyncSnapshot<String> snapshot) {
+                if (snapshot.hasData) {
+                  final nombre = snapshot.data;
+                  return Text(nombre ?? '');
+                } else {
+                  return Text('Cargando...');
+                }
+              },
+            ),
+
+
+              child: Container(
+                      color: Color(0xFF00bec1),
+                      child: Column(
+                        children: <Widget>[
+                          Expanded(
+                            flex: 3,
+                            child: Container(
+                              width: (queryData.size.width) * 0.35,
+                              color: Colors.purple,
+                              //child: Image.asset('images/icons/icodire.png'),
+                            ),
+                          ),
+                          Expanded(
+                            flex: 1,
+                            child: new Container(
+                              //color: Colors.orange,
+                              child: new Center(
+                                child: Container(
+                                  width: (queryData.size.width) * 0.40,
+                                  height: (queryData.size.height) * 0.05,
+                                  decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      borderRadius:
+                                          BorderRadius.circular(40.0)),
+                                  child: Center(
+                                    child: Text(
+                                      'Directorio',
+                                      style: TextStyle(
+                                        fontSize: 18.0,
+                                        color: Color(0xFF262626),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+
+
+                     body: Container(
+        
+        //width: double.infinity,
+       // color: Colors.white,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+              Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  //crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [_boton1("Desayuno"), _boton2("Comida")],
+                ),
+                
+                 Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  // crossAxisAlignment: CrossAxisAlignment.center,
+
+                  children: [
+                    _boton3("Cena       "),
+                    _boton4("Bebidas"),
+                  ],
+                ),
+              
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  // crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    _boton5("Postres"),
+                    _boton6("Otros   "),
+                  ],
+                )
+               
+           // const Text('Hola mundo'),
+            //_boton1("PáginaPrincipal"),
+          ],
+        ),
+      ),
+)
+
+    );
+  }
+
+
+      class MyApp extends HookWidget {
+  // final privider = useProvider(subListNotifier);
+  @override
+  Widget build(BuildContext context) {
+    final state = useProvider(subListNotifier.state);
+    return MaterialApp(
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+          visualDensity: VisualDensity.adaptivePlatformDensity,
+        ),
+        home: Scaffold(
+          appBar: AppBar(
+            title: Text('Manage subscription'),
+          ),
+          body: ListView.separated(
+            padding: EdgeInsets.all(5),
+            itemBuilder: (BuildContext context, int index) {
+              var sub = state[index];
+              return SubListItem(
+                title: sub.name,
+                subTitle: '¥${sub.cost}',
+                tileColor: sub.color,
+                leading: ConstrainedBox(
+                    constraints: BoxConstraints(
+                        minHeight: 44,
+                        minWidth: 34,
+                        maxHeight: 64,
+                        maxWidth: 54),
+                    child: FlutterLogo()),
+              );
+            },
+            separatorBuilder: (BuildContext context, int index) {
+              return SizedBox(height: 10);
+            },
+            itemCount: state.length,
+          ),
+        )
+        );
+  }
+}
+
+class SubListItem extends StatelessWidget {
+  final String title;
+  final String subTitle;
+  final Widget leading;
+  final Color tileColor;
+
+  SubListItem({this.title, this.subTitle, this.leading, this.tileColor});
+
+  @override
+  Widget build(BuildContext context) {
+    return ListTile(
+        title: Text(title),
+        subtitle: Text(subTitle),
+        leading: leading,
+        onTap: () => {},
+        onLongPress: () => {},
+        trailing: Icon(Icons.more_vert),
+    );
+  }
+}
+
+final preferences = Preferencias(); 
+
+Widget botonContinuar() {
+final preferences = Preferencias();
+ return ElevatedButton(onPressed:() {
+  preferences.guardarNombre(nameController.text);
+
+   print(nameController.text);
+                    print(passwordController.text);
+                    if (_formKey.currentState!.validate()) {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => Principal()));
+                      // Si el formulario es válido, queremos mostrar un Snackbar
+                    } else {
+                      Scaffold.of(context).showSnackBar(SnackBar(
+                        content: Text(
+                            'Por favor, Ingresa los datos. Hay campos vacios'),
+                        backgroundColor: Colors.green,
+                        //width: 600,
+                        shape: StadiumBorder(),
+                        elevation: 560,
+                        //   comportamiento: SnackBarBehavior.floating;
+                      ));
+                    }
+  }, 
+ child: Text('Continuar'),
+  
+ 
+ );
+  }
+  class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(color: Colors.white),
+      child: Center(
+        child: Text(
+          'Hello World',
+          textDirection: TextDirection.ltr,
+          style: TextStyle(
+            fontSize: 32,
+            color: Colors.black87,
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+Row(
+    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+    children: [
+      Image.asset('images/pic1.jpg'),
+      Image.asset('images/pic2.jpg'),
+      Image.asset('images/pic3.jpg'),
+    ],
+  );
+
+
+  
+      body: Container(
+       // alignment: Alignment.bottomRight,
+        
+        //width: double.infinity,
+       // color: Colors.white,
+        child:  Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+              Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  //crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [_boton1("Desayuno"), _boton2("Comida  ")],
+                ),
+                
+                 Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  // crossAxisAlignment: CrossAxisAlignment.center,
+
+                  children: [
+                    _boton3("Cena        "),
+                    _boton4("Bebidas "),
+                  ],
+                ),
+              
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  // crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    _boton5("Postres   "),
+                    _boton6("Otros      "),
+                  ],
+                )
+               
+           // const Text('Hola mundo'),
+            //_boton1("PáginaPrincipal"),
+          ],
+
+
+
+            Widget _boton3(String texto) {
+    return MaterialButton(
+      child: Text(
+        texto,
+        style: const TextStyle(color: Colors.black),
+      ),
+      color: Colors.pink[100],
+      elevation: 1,
+      padding: const EdgeInsets.all(60),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(10.0),
+      //  side: const BorderSide(color: Colors.black),
+      ),
+      onPressed: () {
+        Navigator.push(
+          context, 
+          MaterialPageRoute(builder: (context) => BotonBarraNavegacion1()),
+        );
+      },
+    );
+  }
+
+
+  
+  class BotonInicio extends StatelessWidget {
+  Widget build(BuildContext context) {
+   return Container(
+     color: Color(0xFF00bec1),
+     child: Row(
+       
+        mainAxisAlignment: MainAxisAlignment.start,
+           children: [
+               Image.asset('assets/backgrounds/fondo.png'),
+             _L1("PáginaPrincipal"),
+          ],
+     ),
+    );
+  }
+}
+
+  Widget _L1(String texto) {
+    return MaterialButton(
+      child: Text(
+       ('Cargando...                              '),
+        style: const TextStyle(color: Colors.black),
+      ),
+      color: Colors.teal[100],
+      elevation: 1,
+      padding: const EdgeInsets.all(10),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(10.0),
+      //  side: const BorderSide(color: Colors.black),
+      ),
+      onPressed: () {
+       
+      },
+    );
+  }

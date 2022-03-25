@@ -1,3 +1,5 @@
+
+//import 'package:cookmenu/Botones';
 import 'package:cookmenu/BotonesInicio';
 import 'package:cookmenu/desayuno.dart';
 //import 'package:cookmenu/login1';
@@ -11,6 +13,7 @@ import 'package:flutter/cupertino.dart';
 
 import 'desayuno.dart';
 import 'galeria.dart';
+import 'galeria1.dart';
 import 'menuDrawer.dart';
 
 class Principal extends StatefulWidget {
@@ -36,16 +39,17 @@ home: Scaffold(
           drawer: MenuLateral(),
 
       body: Container(
+       // alignment: Alignment.bottomRight,
         
         //width: double.infinity,
        // color: Colors.white,
-        child: Column(
+        child:  Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
               Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   //crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [_boton1("Desayuno"), _boton2("Comida")],
+                  children: [_boton1("Desayuno"), _boton2("Comida  ")],
                 ),
                 
                  Row(
@@ -53,8 +57,8 @@ home: Scaffold(
                   // crossAxisAlignment: CrossAxisAlignment.center,
 
                   children: [
-                    _boton3("Cena       "),
-                    _boton4("Bebidas"),
+                    _boton3("Cena        "),
+                    _boton4("Bebidas "),
                   ],
                 ),
               
@@ -62,8 +66,8 @@ home: Scaffold(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   // crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
-                    _boton5("Postres"),
-                    _boton6("Otros   "),
+                    _boton5("Postres   "),
+                    _boton6("Otros      "),
                   ],
                 )
                
@@ -87,8 +91,8 @@ home: Scaffold(
       elevation: 1,
       padding: const EdgeInsets.all(60),
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(5.0),
-        side: const BorderSide(color: Colors.black),
+        borderRadius: BorderRadius.circular(10.0),
+        //side: const BorderSide(color: Colors.black),
       ),
       onPressed: () {
         Navigator.push(
@@ -109,8 +113,8 @@ home: Scaffold(
       elevation: 1,
       padding: const EdgeInsets.all(60),
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(5.0),
-        side: const BorderSide(color: Colors.black),
+        borderRadius: BorderRadius.circular(10.0),
+       // side: const BorderSide(color: Colors.black),
       ),
       onPressed: () {
         Navigator.push(
@@ -131,13 +135,13 @@ home: Scaffold(
       elevation: 1,
       padding: const EdgeInsets.all(60),
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(5.0),
-        side: const BorderSide(color: Colors.black),
+        borderRadius: BorderRadius.circular(10.0),
+      //  side: const BorderSide(color: Colors.black),
       ),
       onPressed: () {
         Navigator.push(
           context, 
-          MaterialPageRoute(builder: (context) => Desayuno()),
+          MaterialPageRoute(builder: (context) => BotonBarraNavegacion1()),
         );
       },
     );
@@ -153,8 +157,8 @@ home: Scaffold(
       elevation: 1,
       padding: const EdgeInsets.all(60),
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(5.0),
-        side: const BorderSide(color: Colors.black),
+        borderRadius: BorderRadius.circular(10.0),
+      //  side: const BorderSide(color: Colors.black),
       ),
       onPressed: () {
         Navigator.push(
@@ -175,8 +179,8 @@ home: Scaffold(
       elevation: 1,
       padding: const EdgeInsets.all(60),
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(5.0),
-        side: const BorderSide(color: Colors.black),
+        borderRadius: BorderRadius.circular(10.0),
+       // side: const BorderSide(color: Colors.black),
       ),
       onPressed: () {
         Navigator.push(
@@ -197,8 +201,8 @@ home: Scaffold(
       elevation: 1,
       padding: const EdgeInsets.all(60),
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(5.0),
-        side: const BorderSide(color: Colors.black),
+        borderRadius: BorderRadius.circular(10.0),
+        //side: const BorderSide(color: Colors.black),
       ),
       onPressed: () {
         Navigator.push(
@@ -211,3 +215,4 @@ home: Scaffold(
 
  
 }
+

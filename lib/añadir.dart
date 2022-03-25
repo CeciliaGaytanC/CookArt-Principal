@@ -14,16 +14,39 @@ import 'desayuno.dart';
 class Add extends StatelessWidget {
  @override
   Widget build(BuildContext context) {
-    return Scaffold(
-     appBar: AppBar(
-       title:  Text("Añadir"),
-
-       ),
+    return Container(
+     color: Color(0xFF00bec1),
+     child: Row(
        
-      );
+        mainAxisAlignment: MainAxisAlignment.start,
+           children: [
+               Image.asset('assets/backgrounds/fondo.png'),
+             _Like1("PáginaPrincipal"),
+          ],
+     ),
+    );
    
   }    
   }
+ Widget _Like1(String texto) {
+    return MaterialButton(
+      child: Text(
+       ('Cargando...                              '),
+        style: const TextStyle(color: Colors.black),
+      ),
+      color: Colors.teal[100],
+      elevation: 1,
+      padding: const EdgeInsets.all(10),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(10.0),
+      //  side: const BorderSide(color: Colors.black),
+      ),
+      onPressed: () {
+       
+      },
+    );
+  }
+
 
 
 

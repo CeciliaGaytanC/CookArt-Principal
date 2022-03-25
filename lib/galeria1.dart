@@ -36,6 +36,7 @@ class _BotonBarraNavegacion1State extends State<BotonBarraNavegacion1> {
 
       
       bottomNavigationBar: BottomNavigationBar(
+        // type: BottomNavigationBarType.fixed, 
           type: BottomNavigationBarType.fixed,
         currentIndex: _selectedIndex,
         showSelectedLabels: true,
@@ -47,12 +48,13 @@ class _BotonBarraNavegacion1State extends State<BotonBarraNavegacion1> {
               color: Colors.blue,
               size: 30,
             ),
-            title: Text('Inicio'),
+           // title: Text('Inicio'),
             activeIcon: Icon(
               Icons.home,
               color: Colors.red,
               size: 30,
             ),
+            label: "Inicio",
           ),
          
          BottomNavigationBarItem(
@@ -61,13 +63,14 @@ class _BotonBarraNavegacion1State extends State<BotonBarraNavegacion1> {
               color: Colors.blue,
               size: 30,
             ),
-            title: Text('Favoritos'),
+            //title: Text('Favoritos'),
             activeIcon: Icon(
               Icons.favorite,
               color: Colors.red,
               size: 30,
            
             ),
+            label: "Favoritos",
           ),
            BottomNavigationBarItem(
             icon: Icon(
@@ -75,12 +78,13 @@ class _BotonBarraNavegacion1State extends State<BotonBarraNavegacion1> {
               color: Colors.blue,
               size: 30,
              ),
-              title: Text('Añadir Receta'),
+             // title: Text('Añadir Receta'),
             activeIcon: Icon(
               Icons .new_label,
               color: Colors.red,
               size: 30,
             ),
+            label: "Añadir Receta"
             ),
                BottomNavigationBarItem(
             icon: Icon(
@@ -88,12 +92,13 @@ class _BotonBarraNavegacion1State extends State<BotonBarraNavegacion1> {
               color: Colors.blue,
               size: 30,
              ),
-              title: Text('Añadir '),
+             // title: Text('Añadir '),
             activeIcon: Icon(
               Icons .add_a_photo,
               color: Colors.red,
               size: 30,
             ),
+            label: "Añadir",
             )
             
 

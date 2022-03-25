@@ -1,3 +1,4 @@
+
 import 'package:cookmenu/desayuno.dart';
 //import 'package:cookmenu/navegacion';
 import 'package:flutter/material.dart';
@@ -7,6 +8,9 @@ import 'package:flutter/cupertino.dart';
 
 import 'Registro.dart';
 import 'Principal.dart';
+
+
+import 'package:shared_preferences/shared_preferences.dart';
 //import 'package:shared_preferences/shared_preferences.dart';
 //import 'package:cookmenu/Registro';
 
@@ -148,28 +152,11 @@ class _MyHomePageState extends State<MyHomePage> {
             Container(
                 height: 50,
                 padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
-                child: ElevatedButton(
-                  child: const Text('Iniciar Sesión'),
-                  onPressed: () {
-                    print(nameController.text);
-                    print(passwordController.text);
-                    if (_formKey.currentState!.validate()) {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => Principal()));
-                      // Si el formulario es válido, queremos mostrar un Snackbar
-                    } else {
-                      Scaffold.of(context).showSnackBar(SnackBar(
-                        content: Text(
-                            'Por favor, Ingresa los datos. Hay campos vacios'),
-                        backgroundColor: Colors.green,
-                        //width: 600,
-                        shape: StadiumBorder(),
-                        elevation: 560,
-                        //   comportamiento: SnackBarBehavior.floating;
-                      ));
-                    }
-                  },
-                )),
+                child: botonContinuar(
+                  
+                 
+                )
+                ),
             Row(
               children: <Widget>[
                 const Text('Aun no tienes cuenta?'),
@@ -192,5 +179,46 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ));
   }
+
+Widget botonContinuar() {
+final preferences = Preferencias();
+ return ElevatedButton(onPressed:() {
+  preferences.guardarNombre(nameController.text);
+
+   print(nameController.text);
+                    print(passwordController.text);
+                    if (_formKey.currentState!.validate()) {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => Principal()));
+                      // Si el formulario es válido, queremos mostrar un Snackbar
+                    } else {
+                      Scaffold.of(context).showSnackBar(SnackBar(
+                        content: Text(
+                            'Por favor, Ingresa los datos. Hay campos vacios'),
+                        backgroundColor: Colors.green,
+                        //width: 600,
+                        shape: StadiumBorder(),
+                        elevation: 560,
+                        //   comportamiento: SnackBarBehavior.floating;
+                      ));
+                    }
+  }, 
+ child: Text('Continuar'),
+  
+ 
+ );
+  }
 }
 
+class Preferencias{
+   Future<void> guardarNombre(String nombre) async {
+    SharedPreferences preferences = await SharedPreferences.getInstance();
+    await preferences.setString('nombre', nombre);
+
+Future<String?> obtenerNombre() async {
+    SharedPreferences preferences = await SharedPreferences.getInstance();
+    String? nombre = preferences.getString('nombre');
+    return nombre;
+  }
+  }
+  }
