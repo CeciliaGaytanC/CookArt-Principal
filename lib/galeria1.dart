@@ -190,8 +190,55 @@ class Favorito extends StatelessWidget {
 class ProfilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.lightGreenAccent,
+   return Center(
+    // appBar:AppBar(title: Text("Favoritos")),
+      child: Card(
+            shape: RoundedRectangleBorder(
+   borderRadius: BorderRadius.circular(30.0),
+            ),
+child: Column(
+    mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+       
+          Card(
+   
+            child: ListTile(
+                leading: Icon(Icons.album),
+                title: Text('18 and Life'),
+                subtitle: Text('by Skid Row')
+            ),
+          ),
+             Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: <Widget>[
+                TextButton(
+                  child: const Text('BUY TICKETS'),
+                  onPressed: () {/* ... */},
+                ),
+                const SizedBox(width: 8),
+                TextButton(
+                  child: const Text('Ver Receta'),
+                  onPressed: () {/* ... */},
+                ),
+                const SizedBox(width: 8),
+              ],
+            ),
+          Card(
+            
+            child: ListTile(
+                leading: Icon(Icons.album),
+                title: Text('Careless Whisper'),
+                subtitle: Text('by George Michael')
+            ),
+          ),
+        ],
+
+),
+   
+      
+
+       
+      ),
     );
   }
  }
